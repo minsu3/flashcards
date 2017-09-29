@@ -1,15 +1,16 @@
-import React, {Component} from 'react'
+import React,  {Component } from 'react'
 import axios from 'axios'
 
-import {CLIENT_URL} from '../constants.js'
+import { CLIENT_URL } from '../constants.js'
 import FlashcardDetail from './FlashcardDetail'
+
+const COLORS = ['#673ab7', '#2196f3', '#26a69a', '#e91e63']
 
 class FlashcardContainer extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
         flashcards: [],
-        show: false,
         currentIndex: 0
       }
     }
@@ -17,7 +18,6 @@ class FlashcardContainer extends React.Component {
     next () {
       if (this.state.show) 
         this.setState(currState => ({currentIndex: currState.currentIndex + 1}))
-      this.setState(currState => ({show: !currState.show}))
     }
 
     componentDidMount () {
@@ -40,9 +40,7 @@ class FlashcardContainer extends React.Component {
             <main>
               <div className="container">
                 {flashcard && 
-                <FlashcardDetail
-                  card={flashcard}
-                  show={this.state.show}/>}
+                <FlashcardDetail card={flashcard}/>}
               </div>
             </main>
         </div>

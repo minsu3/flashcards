@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 const COLORS = ['#673ab7', '#2196f3', '#26a69a', '#e91e63']
 
@@ -16,7 +16,7 @@ let Definition = props => {
         <div 
             className="card text-center"
             style={styles}>
-            <h5>Definition {idx + 1}</h5>
+            <h5>Definition { idx + 1 }</h5>
             <p>{ def.definitions[0] }</p>
         </div>
     )
@@ -26,14 +26,22 @@ class FlashcardDetail extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            timer: 10
+            timer: 10,
+            show: false
         }
 
+        this.toggleShow = this.toggleShow.bind(this)
         this.decrementTimer = this.decrementTimer.bind(this)
     }
 
     componentDidMount () {
         window.setTimeout(this.decrementTimer, 1000)
+    }
+
+    toggleShow () {
+        this.setState(prevState => ({ 
+            show: !prevState.show
+        }))
     }
 
     decrementTimer () {
@@ -47,14 +55,16 @@ class FlashcardDetail extends Component {
 
     render () {
         let flashcard = this.props.card
-        let show = this.props.show
         return (
             <div>
-                { !show && <h5>{this.state.timer} Seconds!</h5> }
+                <h3>{this.state.timer}</h3>
                 <h1>{ flashcard.word }</h1>
-                { show && flashcard.definitions.map(
-                    (def, idx) => <Definition def={def} key={def._id} idx={idx}/>)
-                }
+                {this.state.show && flashcard.definitions.map((def, idx) => <Definition def={def} key={def._id} idx={idx}/>)}
+                <button
+                    onClick={this.toggleShow}
+                    className="waves-effect waves-light btn">
+                    { this.state.show ? "Hide Definition" : "Show Definition" }
+                </button>
             </div>
         )
     }
