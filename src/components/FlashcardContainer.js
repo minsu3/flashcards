@@ -11,29 +11,44 @@ class FlashcardContainer extends React.Component {
       super(props)
       this.state = {
         flashcards: [],
-        currentIndex: 0
+        currentIndex: 0,
       }
+      this.handleKeyUp = this.handleKeyUp.bind(this)
     }
 
     next () {
-      if (this.state.show) 
-        this.setState(currState => ({currentIndex: currState.currentIndex + 1}))
+      let nextIndex = (this.state.currentIndex + 1) === this.state.flashcards.length
+        ? this.flashcards.length - 1 
+        : this.state.currentIndex + 1
+      this.setState({currentIndex: nextIndex})
+    }
+
+    prev () {
+      let prevIndex = (this.state.currentIndex - 1) < 0 ? 0:  (this.state.currentIndex - 1)
+      this.setState({currentIndex: prevIndex})
+    }
+
+    handleKeyUp (event) {
+      if (event.keyCode === 39) this.next()
+      if (event.keyCode === 37) this.prev() 
     }
 
     componentDidMount () {
-      window.addEventListener('keyup', (event) => {
-        // move to next card on right arrow
-        if (event.keyCode === 39) 
-          this.next()
-      })
+      window.addEventListener('keyup', this.handleKeyUp)
 
       axios
         .get(`${CLIENT_URL}/api/words`)
         .then(response => this.setState({flashcards: response.data}))
         .catch(err => console.log(err))
     }
+
+    componentWillUnmount () {
+      window.removeEventListener('keyup', this.handleKeyUp)
+    }
     
-    render() {
+    componentWillUpdate () {
+    }
+    render () {
       let flashcard = this.state.flashcards[this.state.currentIndex]
       return (
         <div>
