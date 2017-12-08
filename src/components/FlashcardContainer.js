@@ -4,21 +4,21 @@ import axios from 'axios'
 import { CLIENT_URL } from '../constants.js'
 import FlashcardDetail from './FlashcardDetail'
 
-const COLORS = ['#673ab7', '#2196f3', '#26a69a', '#e91e63']
-
-class FlashcardContainer extends React.Component {
+class FlashcardContainer extends Component {
     constructor(props) {
       super(props)
       this.state = {
         flashcards: [],
         currentIndex: 0,
       }
+
       this.handleKeyUp = this.handleKeyUp.bind(this)
+      this.next = this.next.bind(this)
     }
 
     next () {
       let nextIndex = (this.state.currentIndex + 1) === this.state.flashcards.length
-        ? this.flashcards.length - 1 
+        ? this.flashcards.length - 1
         : this.state.currentIndex + 1
       this.setState({currentIndex: nextIndex})
     }
@@ -30,7 +30,7 @@ class FlashcardContainer extends React.Component {
 
     handleKeyUp (event) {
       if (event.keyCode === 39) this.next()
-      if (event.keyCode === 37) this.prev() 
+      if (event.keyCode === 37) this.prev()
     }
 
     componentDidMount () {
@@ -45,17 +45,18 @@ class FlashcardContainer extends React.Component {
     componentWillUnmount () {
       window.removeEventListener('keyup', this.handleKeyUp)
     }
-    
+
     componentWillUpdate () {
     }
+
     render () {
       let flashcard = this.state.flashcards[this.state.currentIndex]
       return (
         <div>
             <main>
               <div className="container">
-                {flashcard && 
-                <FlashcardDetail card={flashcard}/>}
+                {flashcard &&
+                <FlashcardDetail card={flashcard} onTimerEnd={this.next}/>}
               </div>
             </main>
         </div>
