@@ -1,1 +1,1 @@
-export const CLIENT_URL = 'https://swapi.co/api/people/';
+export const CLIENT_URL = 'https://ga-flashcards.herokuapp.com/api/words/';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FlashcardDetail from './FlashcardDetail'
+import Flashcard from './Flashcard'
 import axios from 'axios'
 import { CLIENT_URL } from '../constants.js'
 
