@@ -1,4 +1,4 @@
-### Let's use the Star Wars API to build flashcards!
+### Let's use the Disctionary API to build flashcards!
 
-https://swapi.co/documentation
+https://ga-flashcards.herokuapp.com/api/words/
 
