@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Header = () => (
   <nav className="nav-wrapper red lighten-1">
@@ -6,6 +6,6 @@ const Header = () => (
       <a href="/" className="brand-logo left">Study</a>
     </div>
   </nav>
-)
+);
 
-export default Header
+export default Header;

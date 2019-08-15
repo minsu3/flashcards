@@ -4,7 +4,11 @@ import { CLIENT_URL } from "../constants.js";
 
 class FlashcardContainer extends Component {
   render() {
-    return <div />;
+    return(
+      <div>
+        Flashcard Container
+      </div>
+    )
   }
 }
 
