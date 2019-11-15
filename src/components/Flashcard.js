@@ -5,7 +5,7 @@ class Flashcard extends Component {
   render() {
     
     return (
-      <div class="card">
+      <div className="card">
         Flashcard
       </div>
     )
