@@ -1,10 +1,12 @@
 import React from 'react';
 
-let Definition = (props) => {
 
+// When using a functional component, 
+// we need to manually pass down the props to that component
+let Definition = (props) => {
 	return (
 		<div>
-      Definition
+      		{ props.def }
 		</div>
 	)
 };
