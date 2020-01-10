@@ -8,9 +8,7 @@ class Flashcard extends Component {
     return (
       <div className="card">
         { this.props.detail.word }
-        
         { definitions.map(def => <Definition def={def} />) }
-
       </div>
     )
   }

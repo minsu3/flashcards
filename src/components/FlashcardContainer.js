@@ -6,8 +6,8 @@ class FlashcardContainer extends Component {
 	state = {
 		flashcards: [],
 		currentIndex: 0,
-		timer: 3,
-		maxTime: 5
+		timer: 10,
+		maxTime: 10
 	}
 
 	next = () => {
@@ -34,21 +34,22 @@ class FlashcardContainer extends Component {
 			}
 		}, 1000);
 	}
-// 
-// 	resetTimer = () => {
-// 		if(this.state.timer === 0) {
-// 			setTimer()
-// 		} 
-// 	}
+
+	resetTimer = () => {
+		this.setState({ timer: this.state.maxTime });
+	}
 
 	// callback to be used in the event listener below 
 	handleKeyUp = (event) => {
 		console.log(event.keyCode); //check to see what keyUp is
 		if (event.keyCode === 39) {
 			this.next()
+			this.resetTimer()
+
 		}
 		if (event.keyCode === 37) {
 			this.prev()
+			this.resetTimer()
 		}
 	}
 	
@@ -73,13 +74,11 @@ class FlashcardContainer extends Component {
         		: <Flashcard 
         		detail={ this.state.flashcards[this.state.currentIndex] }
         		timer={ this.state.timer}
-        		//resetTimer={ this.state.resetTimer}
   					/>
         }
       </div>
     )
   }
-
 }
 
 export default FlashcardContainer;
@@ -87,8 +86,8 @@ export default FlashcardContainer;
 // 1. App Component renders
 // 2. FlashContainer renders (with an empty flashcards array in state)
 // 3. Flashcard renders
-		// displays the Loading ... message (because of the empty array above)
-// 4. FlashContainer triggers componentDidMount
+	// displays the Loading ... message (because of the empty array above)
+// 4. FlashcardContainer triggers componentDidMount
 // 5. fetch() populates state object with data
 // 6. setState rerenders all components but now we have data to work with!
 
