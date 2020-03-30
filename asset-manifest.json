@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/flashcards/static/js/main.a00a0ae7.chunk.js",
+    "main.js.map": "/flashcards/static/js/main.a00a0ae7.chunk.js.map",
+    "runtime~main.js": "/flashcards/static/js/runtime~main.45c4c180.js",
+    "runtime~main.js.map": "/flashcards/static/js/runtime~main.45c4c180.js.map",
+    "static/js/2.085b0623.chunk.js": "/flashcards/static/js/2.085b0623.chunk.js",
+    "static/js/2.085b0623.chunk.js.map": "/flashcards/static/js/2.085b0623.chunk.js.map",
+    "index.html": "/flashcards/index.html",
+    "precache-manifest.805d32422e696fc547a53d7c47953cbc.js": "/flashcards/precache-manifest.805d32422e696fc547a53d7c47953cbc.js",
+    "service-worker.js": "/flashcards/service-worker.js"
+  }
+}
